@@ -41,6 +41,11 @@ def home():
     return render_template("index.html")
 
 
+@app.route('/profile', methods=['GET'])
+def profile():
+    return render_template("profile.html")
+
+
 @app.route("/process", methods=['POST'])
 def recognizeFace():
     try:
