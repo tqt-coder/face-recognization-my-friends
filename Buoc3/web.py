@@ -13,6 +13,7 @@ import cv2
 import joblib
 import sys
 from sklearn.svm import LinearSVC
+import database as databaseLite
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = "static/upload"
@@ -69,6 +70,9 @@ def recognizeFace():
                         cv2.FONT_HERSHEY_SIMPLEX, 0.8, (255, 0, 0), 2, cv2.LINE_AA)
 
             cv2.imwrite(path_to_save, imgin)
+            # get information by username
+            user = databaseLite.get_user_by_name(result)
+            print(user)
             return render_template("index.html", user_image=image.filename, rand=str(random()),
                                    msgSuccess="Nhận diện lên thành công")
 

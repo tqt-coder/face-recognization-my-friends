@@ -69,7 +69,7 @@ def main():
 
 
 def insertUser(conn):
-    user = ("Đức Hòa", 21, "BanNinh_0001",
+    user = ("BanNinh", 22, "BanNinh_0001",
             "Thích lập trình web")
     userId = create_user(conn, user)
     print(userId)
@@ -85,14 +85,15 @@ def select_all_users(conn):
         print(row)
 
 
-def get_user_by_name(conn, name):
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE name = ?", (name,))
+def get_user_by_name(name):
+    database = URL_DB
+    conn = create_connection(database)
+    with conn:
+        cur = conn.cursor()
+        cur.execute("SELECT * FROM users WHERE name = ?", (name,))
 
-    rows = cur.fetchall()
-
-    for row in rows:
-        print(row)
+        rows = cur.fetchone()
+        return rows
 
 
 if __name__ == '__main__':
@@ -105,6 +106,4 @@ if __name__ == '__main__':
     conn = create_connection(database)
     with conn:
         """insert data"""
-        # insertUser(conn)
-        """Get all data"""
-        get_user_by_name(conn, "Đức Hòa")
+        insertUser(conn)
