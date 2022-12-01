@@ -70,7 +70,7 @@ class Main(Frame):
         test_prediction = svc.predict(face_feature)
 
         result = mydict[test_prediction[0]]
-        cv2.putText(imgin, result, (5, 15),
+        cv2.putText(imgin, result, (60, 20),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255))
         cv2.namedWindow("ImageIn", cv2.WINDOW_AUTOSIZE)
         cv2.imshow("ImageIn", imgin)
