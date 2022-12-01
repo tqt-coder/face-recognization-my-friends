@@ -24,7 +24,7 @@ $("#multiplefileupload").fileinput({
         showUpload: false,
         showDownload: false,
         showZoom: false,
-        showDrag: true,
+        showDrag: false,
         removeIcon: "<i class='fa fa-times'></i>",
         uploadIcon: "<i class='fa fa-upload'></i>",
         dragIcon: "<i class='fa fa-arrows-alt'></i>",

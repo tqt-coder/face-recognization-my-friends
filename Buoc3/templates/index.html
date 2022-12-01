@@ -44,7 +44,7 @@
     <!-- Page Content -->
     <div class="container">
         <div class="card border-0 shadow my-5">
-            <div class="card-body p-5">
+            <div class="card-body">
                 {% if msg %}
                 <div class="result_title"><b>Lỗi:</b></div>
                 <span class="result_id">{{ msg }}</span>
@@ -70,8 +70,8 @@
                             <div class="row justify-content-center">
                                 <div class="col-xl-8">
                                     <div class="file-upload-contain">
-                                        <input id="multiplefileupload" type="file" name="file" accept=".jpg,.png,.bmp"
-                                            multiple />
+                                        <input required id="multiplefileupload" type="file" name="file"
+                                            accept=".jpg,.png,.bmp" multiple />
                                     </div>
                                 </div>
                             </div>
