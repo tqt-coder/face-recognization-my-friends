@@ -37,7 +37,7 @@ def create_table(conn, create_table_sql):
 
 
 def create_user(conn, user):
-    sql = ''' INSERT INTO users(name,age,image,description)
+    sql = ''' INSERT INTO users(name,job,image,description)
               VALUES(?,?,?,?) '''
     cur = conn.cursor()
     cur.execute(sql, user)
@@ -51,26 +51,26 @@ def main():
     sql_create_table = """ CREATE TABLE IF NOT EXISTS users (
                                         id integer PRIMARY KEY,
                                         name text NOT NULL,
-                                        age integer NOT NULL,
+                                        job text NOT NULL,
                                         image text  NOT NULL,
                                         description text NOT NULL
                                     ); """
     # Delete table
     sql_delete_table = """ DROP TABLE users """
-
     conn = create_connection(database)
-
     if conn is not None:
         # create table when connection exist
         create_table(conn, sql_create_table)
-
+        print("Success")
     else:
         print("Error! cannot create the database connection.")
 
+# mydict = ['BanDat', 'BanNinh',  'BanSon','BanThanh', 'BanTuan', 'DucHoa', 'HuuDat', 'LeTai', 'SongHuy', 'ThayDuc']
+
 
 def insertUser(conn):
-    user = ("BanNinh", 22, "BanNinh_0001",
-            "Thích lập trình web")
+    user = ("ThayDuc", "Teacher", "ThayDuc",
+            "Người thầy hiền lành, nói chuyện nhẹ nhàng. Có chuyên môn cao về giảng dạy xử lý ảnh. Mong thầy có nhiều sức khỏe để tiếp tục hướng dẫn chúng em")
     userId = create_user(conn, user)
     print(userId)
 
@@ -102,8 +102,8 @@ if __name__ == '__main__':
     """Create table, deletable, read data"""
     # main()
 
-    database = URL_DB
-    conn = create_connection(database)
-    with conn:
-        """insert data"""
-        insertUser(conn)
+    # database = URL_DB
+    # conn = create_connection(database)
+    # with conn:
+    #     """insert data"""
+    #     insertUser(conn)
