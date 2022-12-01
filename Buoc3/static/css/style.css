@@ -1,0 +1,41 @@
+/* Set a background image by replacing the URL below */
+body {
+    background: url('../images/bgface.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.container-custom {
+    padding: 5px 10px;
+    overflow: hidden;
+}
+
+.btn-js {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block-img {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid #000;
+    min-width: 380px;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+}
+
+.title-img {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.img-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
