@@ -50,6 +50,10 @@
                 <span class="result_id">{{ msg }}</span>
                 <hr>
                 {% endif %}
+                {% if msgSuccess %}
+                <span class="result_id">{{ msgSuccess }}</span>
+                <hr>
+                {% endif %}
                 <form action="/process" method="POST" enctype="multipart/form-data">
                     <div class="container text-center mb-1">
                         <div class="row">
@@ -73,7 +77,6 @@
                             </div>
                         </div>
                     </section>
-                    <hr>
                     <div class="action-btn">
                         <button class="btn btn-success btn-recreate" type="submit">Nhận diện</button>
                     </div>
