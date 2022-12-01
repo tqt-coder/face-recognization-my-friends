@@ -85,9 +85,9 @@ def select_all_users(conn):
         print(row)
 
 
-def get_user_by_id(conn, id):
+def get_user_by_name(conn, name):
     cur = conn.cursor()
-    cur.execute("SELECT * FROM users WHERE id = ?", (id,))
+    cur.execute("SELECT * FROM users WHERE name = ?", (name,))
 
     rows = cur.fetchall()
 
@@ -107,4 +107,4 @@ if __name__ == '__main__':
         """insert data"""
         # insertUser(conn)
         """Get all data"""
-        get_user_by_id(conn, 1)
+        get_user_by_name(conn, "Đức Hòa")
