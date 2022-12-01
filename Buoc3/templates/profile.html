@@ -19,55 +19,46 @@
 
 <body>
     <div class="container-profile">
+        {% if result %}
         <aside class="profile-card">
             <header>
+
                 <!-- here’s the avatar -->
                 <a href="https://tutsplus.com">
-                    <img src="../static/upload/BanNinh_0003.bmp" width="200px" style="object-fit: contain;">
+                    {% if user_image %}
+                    <img class="img_result" width="200px" style="object-fit: contain;"
+                        src="{{ url_for('static', filename=user_image) }}" alt="User Image">
+                    {% endif %}
                 </a>
-
-                <!-- the username -->
-                <h1>George Darkos</h1>
-
-                <!-- and role or location -->
-                <h2>- Full Stack Web Developer -</h2>
-
+                <h1> {{result[1]}}</h1>
+                <h1></h1>
+                <br>
+                <h2> {{result[3]}}</h2>
             </header>
-
-            <!-- bit of a bio; who are you? -->
             <div class="profile-bio">
-
-                <p>Hello there!</p>
-                <p>I am a full stack web developer. I mainly work with PHP, HTML, CSS, JS and WordPress.
-                    <br />I also play well with Photoshop, Corel Draw, After Effects and other cool stuff.
+                <p>{{result[4]}}
                 </p>
-
             </div>
-
-            <!-- some social links to show off -->
             <ul class="profile-social-links">
-
-                <!-- twitter - el clásico  -->
                 <li>
-                    <a href="https://twitter.com/tutsplus">
+                    <a href="/">
                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-twitter.svg">
                     </a>
                 </li>
-
-                <!-- envato – use this one to link to your marketplace profile -->
                 <li>
-                    <a href="https://envato.com">
+                    <a href="/">
                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-envato.svg">
                     </a>
                 </li>
-
                 <li>
-                    <a href="https://codepen.io/tutsplus">
+                    <a href="/">
                         <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/210284/social-codepen.svg">
                     </a>
                 </li>
             </ul>
         </aside>
+        {% endif %}
+
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>

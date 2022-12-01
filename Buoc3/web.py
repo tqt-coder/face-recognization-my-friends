@@ -78,7 +78,8 @@ def recognizeFace():
             # get information by username
             user = databaseLite.get_user_by_name(result)
             print(user)
-            return render_template("index.html", user_image=image.filename, rand=str(random()),
+            pathImage = 'upload/' + image.filename
+            return render_template("profile.html", user_image=pathImage, result=user,
                                    msgSuccess="Nhận diện lên thành công")
 
         else:
