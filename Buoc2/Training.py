@@ -1,15 +1,14 @@
-import numpy as np
-import os.path
-import cv2
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-import joblib
-
-from sklearn.metrics import f1_score, accuracy_score
-from sklearn.preprocessing import LabelEncoder
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import LinearSVC
 from sklearn.manifold import TSNE
+from sklearn.svm import LinearSVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import f1_score, accuracy_score
+import joblib
+import matplotlib.patches as patches
+import matplotlib.pyplot as plt
+import cv2
+import os.path
+import numpy as np
 
 
 class IdentityMetadata():
@@ -25,8 +24,9 @@ class IdentityMetadata():
         return self.image_path()
 
     def image_path(self):
-        return os.path.join(self.base, self.name, self.file) 
-    
+        return os.path.join(self.base, self.name, self.file)
+
+
 def load_metadata(path):
     metadata = []
     for i in sorted(os.listdir(path)):
@@ -37,20 +37,24 @@ def load_metadata(path):
                 metadata.append(IdentityMetadata(path, i, f))
     return np.array(metadata)
 
+
 def load_image(path):
     img = cv2.imread(path, 1)
     # OpenCV loads images with color channels
     # in BGR order. So we need to reverse them
-    return img[...,::-1]
+    return img[..., ::-1]
+
 
 def align_image(img):
     pass
 
+
 def distance(emb1, emb2):
     return np.sum(np.square(emb1 - emb2))
 
+
 def show_pair(idx1, idx2):
-    plt.figure(figsize=(8,3))
+    plt.figure(figsize=(8, 3))
     plt.suptitle(f'Distance = {distance(embedded[idx1], embedded[idx2]):.2f}')
     plt.subplot(121)
     plt.imshow(load_image(metadata[idx1].image_path()))
@@ -69,7 +73,7 @@ detector = cv2.FaceDetectorYN.create(
 detector.setInputSize((320, 320))
 
 recognizer = cv2.FaceRecognizerSF.create(
-            "face_recognition_sface_2021dec.onnx","")
+    "face_recognition_sface_2021dec.onnx", "")
 
 
 metadata = load_metadata('../image')
@@ -103,5 +107,4 @@ svc = LinearSVC()
 svc.fit(X_train, y_train)
 acc_svc = accuracy_score(y_test, svc.predict(X_test))
 print('SVM accuracy: %.6f' % acc_svc)
-joblib.dump(svc,'svc.pkl')
-
+joblib.dump(svc, 'svc.pkl')
