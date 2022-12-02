@@ -65,12 +65,13 @@ def main():
     else:
         print("Error! cannot create the database connection.")
 
-# mydict = ['BanDat', 'BanNinh',  'BanSon','BanThanh', 'BanTuan', 'DucHoa', 'HuuDat', 'LeTai', 'SongHuy', 'ThayDuc']
+# mydict = ['BanAnh', 'BanBao', 'BanDat', 'BanDien', 'BanKy', 'BanNam', 'BanNgoc', 'BanNinh', 'BanSon', 'BanThanh',
+#           'BanTuan', 'DaiNghia', 'DucHoa', 'HoaiNam', 'HuuDat', 'LeTai', 'SongHuy', 'ThayDuc', 'TieuHan', 'TieuTien']
 
 
 def insertUser(conn):
-    user = ("ThayDuc", "Teacher", "ThayDuc",
-            "Người thầy hiền lành, nói chuyện nhẹ nhàng. Có chuyên môn cao về giảng dạy xử lý ảnh. Mong thầy có nhiều sức khỏe để tiếp tục hướng dẫn chúng em")
+    user = ("BanNam", "Tự động hóa", "BanNam",
+            "Một chàng trai có dáng người ưu nhìn, ham đi chơi và ham làm mọi thứ. Ăn nói to rõ dễ nghe")
     userId = create_user(conn, user)
     print(userId)
 
@@ -102,8 +103,8 @@ if __name__ == '__main__':
     """Create table, deletable, read data"""
     # main()
 
-    # database = URL_DB
-    # conn = create_connection(database)
-    # with conn:
-    #     """insert data"""
-    #     insertUser(conn)
+    database = URL_DB
+    conn = create_connection(database)
+    with conn:
+        """insert data"""
+        insertUser(conn)
