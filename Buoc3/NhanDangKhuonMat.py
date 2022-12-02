@@ -24,7 +24,7 @@ recognizer = cv2.FaceRecognizerSF.create(
     "face_recognition_sface_2021dec.onnx", "")
 
 svc = joblib.load('svc.pkl')
-mydict = ['BanDat', 'BanNinh',  'BanSon',
+mydict = ['BanDat', 'BanNgoc', 'BanNinh',  'BanSon',
           'BanThanh', 'BanTuan', 'DucHoa', 'HuuDat', 'LeTai', 'SongHuy', 'ThayDuc']
 
 
